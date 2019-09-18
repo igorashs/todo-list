@@ -13,12 +13,34 @@
   </head>
   <body>
     <div class="container">
+      <!-- header -->
       <header class="header">
         <h1 class="logo">Todo List</h1>
       </header>
-      <section class="menu">
+      <!-- header -->
+      <!-- projects menu -->
+      <section class="projects-menu">
         <h2 class="title">Projects</h2>
+        <h3 class="current-project">Default</h3>
+        <button class="button" id="new-prj-btn">New Project</button>
+        <div class="project-list">
+          <button class="button project" data-id="0">Default</button>
+        </div>
       </section>
+      <!-- projects menu -->
+
+      <!-- main -->
+      <main class="main">
+        <h2 class="title"><span class="opened-prj">Default</span> Todo List</h2>
+        <div class="todo-list">
+          <div class="todo-item" data-id="0">
+            <h5 class="date">27.10.2019</h5>
+            <h3 class="title">Create Todo List</h3>
+            <!-- make a menu option -->
+          </div>
+        </div>
+      </main>
+      <!-- main -->
     </div>
 
     <script src="main.js"></script>

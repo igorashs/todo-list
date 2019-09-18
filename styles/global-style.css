@@ -1,7 +1,32 @@
+/* global */
 * {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: rgb(24, 0, 51);
+  height: 100vh;
 }
+/* global */
+
+/* container */
+.container {
+  height: 100%;
+}
+/* container */
+
+/* header */
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+}
+.header h1 {
+  font-size: 3rem;
+  color: #fff;
+  padding-left: 1rem;
+}
+/* header */
