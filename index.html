@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/global-style.css" />
@@ -13,34 +13,45 @@
   </head>
   <body>
     <div class="container">
-      <!-- header -->
+      <!-- +header -->
       <header class="header">
         <h1 class="logo">Todo List</h1>
       </header>
-      <!-- header -->
-      <!-- projects menu -->
-      <section class="projects-menu">
-        <h2 class="title">Projects</h2>
-        <h3 class="current-project">Default</h3>
-        <button class="button" id="new-prj-btn">New Project</button>
-        <div class="project-list">
-          <button class="button project" data-id="0">Default</button>
-        </div>
-      </section>
-      <!-- projects menu -->
+      <!-- -header -->
+      <!-- +content wrapper -->
+      <main class="content-wrapper">
+        <!-- +projects menu -->
+        <section class="projects-menu">
+          <h2 class="title">Projects</h2>
+          <h3 class="current-project title-separator">Default</h3>
+          <button class="button" id="new-prj-btn">New Project</button>
+          <div class="project-list-container">
+            <h3 class="title title-separator">Project List</h3>
+            <div class="project-list">
+              <!-- ! +project element -->
 
-      <!-- main -->
-      <main class="main">
-        <h2 class="title"><span class="opened-prj">Default</span> Todo List</h2>
-        <div class="todo-list">
-          <div class="todo-item" data-id="0">
-            <h5 class="date">27.10.2019</h5>
-            <h3 class="title">Create Todo List</h3>
-            <!-- make a menu option -->
+              <!-- ! -project element -->
+            </div>
           </div>
-        </div>
+        </section>
+        <!-- -projects menu -->
+
+        <!-- +main -->
+        <main class="main">
+          <h2 class="title">
+            <span class="opened-prj">Default</span> Todo List
+          </h2>
+          <div class="todo-list">
+            <div class="todo-item" data-id="0">
+              <h5 class="date">27.10.2019</h5>
+              <h3 class="title">Create Todo List</h3>
+              <!-- !make a menu option -->
+            </div>
+          </div>
+        </main>
+        <!-- -main -->
       </main>
-      <!-- main -->
+      <!-- -content wrapper -->
     </div>
 
     <script src="main.js"></script>
