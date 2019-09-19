@@ -406,8 +406,10 @@ body {
   background-color: rgba(0, 128, 0, 0.7);
 }
 
-/* +new-todo modal */
-.new-todo {
+/* +new-todo modal
+   +edit-todo modal */
+.new-todo,
+.edit-todo {
   width: 700px;
   height: 700px;
   margin-top: 10vh;
@@ -442,7 +444,8 @@ body {
 .modal-content select option:nth-child(3) {
   background-color: rgba(11, 80, 77, 0.8);
 }
-/* -new-todo modal */
+/* -new-todo modal 
+   -edit-todo modal*/
 
 /*! -modal */
 
