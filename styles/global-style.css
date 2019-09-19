@@ -309,8 +309,109 @@ body {
   transform: scale(1.05);
 }
 /* -add item btn */
-
 /* -main */
+
+/*! +modal global */
+.modal-wrapper {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 80;
+  display: grid;
+  justify-content: center;
+  padding-top: 20vh;
+}
+
+.modal {
+  background-color: rgb(38, 53, 53);
+  box-shadow: 0 0 10px 2px #000;
+  border-radius: 5px;
+  display: grid;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+.modal-title {
+  height: 4rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(30, 65, 68);
+  box-shadow: inset 0 0 100px 3px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid rgb(165, 165, 165);
+}
+.modal-title h2 {
+  text-shadow: 0 0 4px #000, 0 0 6px rgb(5, 29, 32);
+}
+.modal-content {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+
+.modal-content label {
+  font-size: 1.5rem;
+  color: rgb(64, 207, 226);
+  text-shadow: 0 0 2px #000;
+}
+
+.modal-content input {
+  padding-left: 0.5rem;
+  width: 100%;
+  border: 0;
+  color: #fff;
+  background-color: rgba(11, 72, 80, 0.5);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.384);
+  font-size: 1.5rem;
+  height: 3rem;
+}
+.modal-content input:focus,
+.modal-content input:hover {
+  background-color: rgba(11, 72, 80, 1);
+}
+.modal-options {
+  border-top: 2px solid rgb(165, 165, 165);
+  height: 4rem;
+  width: 100%;
+  align-self: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 4px;
+  justify-content: space-between;
+  background-color: rgb(46, 0, 58);
+}
+.modal-options .button {
+  border: 0;
+  font-size: 1.5rem;
+  color: #fff;
+  min-width: 50%;
+  box-shadow: inset 0 0 20px 2px #000;
+}
+.modal-options .cancel {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+.modal-options .cancel:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+.modal-options .create {
+  background-color: rgba(0, 128, 0, 0.4);
+}
+.modal-options .create:hover {
+  background-color: rgba(0, 128, 0, 0.7);
+}
+
+/* +new-project modal */
+/* .new-project .modal-conten {
+
+} */
+/* -new-project modal */
+
+/*! -modal */
 
 /* +additional styles */
 .separator {
