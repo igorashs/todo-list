@@ -446,6 +446,41 @@ body {
 }
 /* -new-todo modal 
    -edit-todo modal*/
+/* +confirmation modal */
+.confirmation .modal-content {
+  align-self: start;
+  justify-self: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.confirmation .button {
+  border: 0;
+  text-shadow: 0 0 5px #000;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 2rem;
+  height: 5rem;
+  width: 100%;
+  box-shadow: 0 0 5px 2px rgb(0, 0, 0),
+    inset 0 0 100px 2px rgba(99, 0, 124, 0.65);
+  transition-duration: 0.2s;
+}
+.confirmation .no-btn {
+  background-color: rgba(39, 180, 39, 0.5);
+}
+.confirmation .no-btn:hover {
+  background-color: rgba(39, 180, 39, 0.8);
+}
+.confirmation .yes-btn {
+  background-color: rgba(170, 25, 25, 0.5);
+}
+.confirmation .yes-btn:hover {
+  background-color: rgba(170, 25, 25, 0.8);
+}
+/* -confirmation modal */
 
 /*! -modal */
 
