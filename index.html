@@ -90,12 +90,38 @@
     </div>
 
     <!-- +create new project modal -->
-    <div class="modal-wrapper">
+    <div class="modal-wrapper display-none">
       <div class="new-project modal">
         <div class="modal-title"><h2>New Project</h2></div>
         <div class="modal-content">
           <label for="new-project-name">Project Name</label>
           <input type="text" id="new-project-name" />
+        </div>
+        <div class="modal-options">
+          <button class="button cancel">Cancel</button>
+          <button class="button create">Create</button>
+        </div>
+      </div>
+    </div>
+    <!-- -create new project modal -->
+
+    <!-- +create new project modal -->
+    <div class="modal-wrapper display-none">
+      <div class="new-todo modal">
+        <div class="modal-title"><h2>New ToDo</h2></div>
+        <div class="modal-content">
+          <label for="new-todo-title">Title</label>
+          <input type="text" id="new-todo-title" />
+          <label for="new-due-date">Due Date</label>
+          <input type="date" id="new-due-date" />
+          <label for="new-description">Description</label>
+          <textarea id="new-description" rows="6">Fool</textarea>
+          <label for="new-priority">Priority</label>
+          <select id="new-priority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
         </div>
         <div class="modal-options">
           <button class="button cancel">Cancel</button>
