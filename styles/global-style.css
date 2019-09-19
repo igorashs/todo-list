@@ -263,7 +263,7 @@ body {
   font-size: 3rem;
   grid-area: c;
 }
-.todo-options .open {
+.todo-options .edit {
   font-size: 1.5rem;
   background-color: rgb(141, 156, 0);
 }
@@ -280,7 +280,7 @@ body {
 .todo-options .complete:hover {
   background-color: rgba(35, 153, 231, 0.6);
 }
-.todo-options .open:hover {
+.todo-options .edit:hover {
   background-color: rgb(180, 200, 0);
 }
 .todo-options .delete:hover {
