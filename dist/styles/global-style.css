@@ -321,7 +321,6 @@ body {
   z-index: 80;
   display: grid;
   justify-content: center;
-  padding-top: 20vh;
 }
 
 .modal {
@@ -332,6 +331,7 @@ body {
   width: 400px;
   height: 400px;
   overflow: hidden;
+  margin-top: 20vh;
 }
 .modal-title {
   height: 4rem;
@@ -355,6 +355,7 @@ body {
 }
 
 .modal-content label {
+  padding-botoom: 1rem;
   font-size: 1.5rem;
   color: rgb(64, 207, 226);
   text-shadow: 0 0 2px #000;
@@ -366,7 +367,7 @@ body {
   border: 0;
   color: #fff;
   background-color: rgba(11, 72, 80, 0.5);
-  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.384);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.4);
   font-size: 1.5rem;
   height: 3rem;
 }
@@ -405,11 +406,43 @@ body {
   background-color: rgba(0, 128, 0, 0.7);
 }
 
-/* +new-project modal */
-/* .new-project .modal-conten {
+/* +new-todo modal */
+.new-todo {
+  width: 700px;
+  height: 700px;
+  margin-top: 10vh;
+}
+.modal-content textarea {
+  border: 0;
+  padding-left: 0.2rem;
+  background-color: rgba(11, 72, 80, 0.5);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+  color: #fff;
+  resize: none;
+}
+.modal-content textarea:hover {
+  background-color: rgba(11, 72, 80, 0.7);
+}
+.modal-content select {
+  border: 0;
+  color: #fff;
+  padding-left: 0.2rem;
+  background-color: rgba(11, 72, 80, 0.5);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+}
 
-} */
-/* -new-project modal */
+.modal-content select option:nth-child(1) {
+  background-color: rgba(80, 11, 11, 0.8);
+}
+.modal-content select option:nth-child(2) {
+  background-color: rgba(11, 80, 15, 0.8);
+}
+.modal-content select option:nth-child(3) {
+  background-color: rgba(11, 80, 77, 0.8);
+}
+/* -new-todo modal */
 
 /*! -modal */
 
@@ -422,5 +455,20 @@ body {
   padding: 1rem;
   border-top: 2px solid rgb(165, 165, 165);
   border-bottom: 2px solid rgb(165, 165, 165);
+}
+.display-none {
+  display: none !important;
+}
+input[type='date']::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+}
+input[type='date']::-webkit-calendar-picker-indicator {
+  padding-right: 1rem;
+  color: rgb(17, 43, 46);
+  background: none;
+}
+input[type='date']::-webkit-calendar-picker-indicator:hover {
+  color: rgb(83, 119, 122);
 }
 /* -additional styles */
