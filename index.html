@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/global-style.css" />
-    <title>TODO List</title>
+    <title>ToDo List</title>
   </head>
   <body>
     <div class="container">
@@ -88,7 +88,6 @@
       </div>
       <!-- -content wrapper -->
     </div>
-
     <!-- +create new project modal -->
     <div class="modal-wrapper display-none">
       <div class="new-project modal">
@@ -104,7 +103,6 @@
       </div>
     </div>
     <!-- -create new project modal -->
-
     <!-- +create todo item modal -->
     <div class="modal-wrapper display-none">
       <div class="new-todo modal">
@@ -131,7 +129,7 @@
     </div>
     <!-- -create todo item modal -->
     <!-- + edit todo item modal -->
-    <div class="modal-wrapper display-none">
+    <div class="modal-wrapper">
       <div class="edit-todo modal">
         <div class="modal-title"><h2>Edit ToDo</h2></div>
         <div class="modal-content">
@@ -155,6 +153,34 @@
       </div>
     </div>
     <!-- -edit todo item modal -->
+    <!-- +todo-info modal -->
+    <div class="modal-wrapper display-none">
+      <div class="info-todo modal">
+        <div class="modal-title"><h2>Info ToDo</h2></div>
+        <div class="modal-content">
+          <div class="todo-title todo-info">
+            <h3>Title</h3>
+            <h2 id="info-todo-title">Create Todo List</h2>
+          </div>
+          <div class="todo-date todo-info">
+            <h3>Due Date</h3>
+            <h2 id="info-due-date">27.10.2019</h2>
+          </div>
+          <div class="todo-description todo-info">
+            <h3>Description</h3>
+            <p id="info-description"></p>
+          </div>
+          <div class="todo-priority todo-info">
+            <h3>Priority</h3>
+            <h2 id="info-priority">High</h2>
+          </div>
+        </div>
+        <div class="modal-options">
+          <button class="button cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- -todo-info modal -->
     <!-- +create new project modal -->
     <div class="modal-wrapper display-none">
       <div class="confirmation modal">
@@ -166,7 +192,6 @@
       </div>
     </div>
     <!-- -create new project modal -->
-
     <script src="main.js"></script>
   </body>
 </html>
