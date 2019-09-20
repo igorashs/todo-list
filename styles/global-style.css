@@ -399,10 +399,12 @@ body {
 .modal-options .cancel:hover {
   background-color: rgba(255, 0, 0, 0.7);
 }
-.modal-options .create {
+.modal-options .create,
+.modal-options .edit {
   background-color: rgba(0, 128, 0, 0.4);
 }
-.modal-options .create:hover {
+.modal-options .create:hover,
+.modal-options .edit:hover {
   background-color: rgba(0, 128, 0, 0.7);
 }
 
