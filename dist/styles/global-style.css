@@ -311,7 +311,7 @@ body {
 /* -add item btn */
 /* -main */
 
-/*! +modal global */
+/* +modal global */
 .modal-wrapper {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -355,7 +355,7 @@ body {
 }
 
 .modal-content label {
-  padding-botoom: 1rem;
+  padding-bottom: 0.2rem;
   font-size: 1.5rem;
   color: rgb(64, 207, 226);
   text-shadow: 0 0 2px #000;
@@ -482,7 +482,53 @@ body {
 }
 /* -confirmation modal */
 
-/*! -modal */
+/* +info-todo-modal */
+.info-todo {
+  margin-top: 10vh;
+  width: 700px;
+  height: 650px;
+}
+.todo-info {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(165, 165, 165);
+}
+.todo-info h2 {
+  font-size: 1.7rem;
+}
+.todo-info h3 {
+  font-size: 1.3rem;
+}
+.todo-date h2 {
+  font-style: italic;
+}
+
+.todo-description {
+  flex-direction: column;
+  padding: 0;
+}
+.todo-description h3 {
+  padding: 0 1rem;
+  align-self: flex-start;
+}
+.todo-description p {
+  padding: 0 0.3rem;
+  overflow: auto;
+  width: 100%;
+  height: 300px;
+  font-size: 1.5rem;
+  background-color: rgba(11, 72, 80, 0.5);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  word-break: break-all;
+  white-space: pre-line;
+}
+.info-todo .modal-options {
+  grid-template-columns: 1fr;
+}
+/* -info-todo-modal */
+/* -modal */
 
 /* +additional styles */
 .separator {
