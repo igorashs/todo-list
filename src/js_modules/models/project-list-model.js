@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 
 export default class ProjectListModel extends EventEmitter {
   constructor(storage) {
+    super();
     if (this.instance) {
       return this.instance;
     }
@@ -9,10 +10,10 @@ export default class ProjectListModel extends EventEmitter {
     // private data
     const _projectList = storage.getProjectList();
 
-    this.getProjectAt = function(id) {
-      console.log(`kek ${id}`);
-      return id;
+    this.getProjectList = function() {
+      return _projectList;
     };
+    this.getProjectAt = function(id) {};
     this.addProject = function(prj) {};
     this.removeProjectAt = function(id) {};
   }

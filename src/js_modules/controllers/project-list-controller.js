@@ -11,9 +11,16 @@ export default class ProjectListController {
     const _projectListModel = new ProjectListModel(storageModel);
     const _projectListView = new ProjectListView();
 
+    // add handlers
+    _projectListView.on('deleteProject', (id) => {
+      console.log(`Project has been deleted ${id}`);
+    });
+    _projectListView.on('openProject', (id) => {
+      console.log(`Project has been opened ${id}`);
+    });
+
     this.init = function() {
-      console.log('render all lists');
-      console.log(_projectListModel.getProjectAt(2));
+      _projectListView.render(_projectListModel.getProjectList());
     };
   }
 }

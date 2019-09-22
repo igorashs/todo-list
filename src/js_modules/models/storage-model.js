@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 
 export default class StorageModel extends EventEmitter {
   constructor(storage) {
+    super();
     if (this.instance) {
       return this.instance;
     }
