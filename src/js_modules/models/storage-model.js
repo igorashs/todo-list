@@ -33,7 +33,6 @@ export default class StorageModel extends EventEmitter {
       _PRJ_UNIQUE_ID: 0
     };
 
-    // private
     const _storageIsEmpty = () => {
       const prjList = JSON.parse(_storage.getItem(_PROJECT_LIST));
       if (!prjList || !prjList[0]) {
