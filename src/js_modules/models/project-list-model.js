@@ -15,7 +15,12 @@ export default class ProjectListModel extends EventEmitter {
     this.getProjectList = function() {
       return _projectList;
     };
-    this.getProjectAt = function(id) {};
+    this.getProjectAt = function(id) {
+      return _projectList.find((prj) => prj.id == id);
+    };
+    this.getFirstProject = function() {
+      return _projectList[0];
+    };
     this.addProject = function(prj) {};
     this.removeProjectAt = function(id) {};
 

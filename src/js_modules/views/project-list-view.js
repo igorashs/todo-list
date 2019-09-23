@@ -47,4 +47,9 @@ export default class ProjectListView extends EventEmitter {
       return elementView.firstElementChild;
     }
   }
+
+  updateCurrentPrj(prj) {
+    const curPrjView = document.querySelector('.current-project');
+    curPrjView.textContent = prj.name;
+  }
 }
