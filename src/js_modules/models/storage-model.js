@@ -14,22 +14,23 @@ export default class StorageModel extends EventEmitter {
     const _PROJECT_LIST = 'projectList';
     const _PRJ_UNIQUE_ID = 'prjUniqueID';
 
-    const _DEFAULT_PRJ = [{ name: 'Default', id: 0 }];
+    const _DEFAULT_LIST = [{ name: 'Default', id: 0 }];
 
     this.getProjectList = function() {
       const prjList = JSON.parse(_storage.getItem(_PROJECT_LIST));
       if (prjList) {
         return prjList;
       }
-      return _DEFAULT_PRJ;
+      return _DEFAULT_LIST;
     };
 
     this.getPrjUniqueID = function() {
       const prjUniqueID = JSON.parse(_storage.getItem(_PRJ_UNIQUE_ID));
       if (prjUniqueID) {
+        console.log(prjUniqueID);
         return prjUniqueID;
       }
-      return _DEFAULT_PRJ.id;
+      return _DEFAULT_LIST[0].id;
     };
 
     this.setProjectList = function(prjList) {

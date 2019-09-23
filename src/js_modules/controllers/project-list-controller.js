@@ -45,13 +45,22 @@ export default class ProjectListController {
       if (_validator.isValidName(name)) {
         // create prj
         const id = _projectListModel.getUniqueId();
+        console.log(id);
         const prj = new Project(name, id);
-        // add to storage
-        // close && clear
-        _crtProjectMdView.displayValidName();
+        _projectListModel.addProject(prj);
+
+        _crtProjectMdView.clear();
+        _crtProjectMdView.closeModal();
       } else {
         _crtProjectMdView.displayInvalidName();
       }
+    });
+
+    // add handlers for ProjectListModel
+    // add project
+    _projectListModel.on('addProject', (prj) => {
+      _projectListView.render(_projectListModel.getProjectList());
+      _projectListView.updateCurrentPrj(prj);
     });
 
     this.init = function() {
