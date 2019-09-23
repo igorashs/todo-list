@@ -46,6 +46,7 @@ export default class ProjectListModel extends EventEmitter {
 
     this.setCurrentProject = function(prj) {
       _currentProject = prj;
+      this.emit('changeProject', prj);
     };
 
     return this;
