@@ -24,10 +24,15 @@ export default class ProjectListModel extends EventEmitter {
     };
     this.addProject = function(prj) {
       _projectList.push(prj);
-      this.emit('addProject', prj);
       this.emit('save', _projectList, uniqueId);
+      this.emit('addProject', prj);
     };
-    this.removeProjectAt = function(id) {};
+    this.removeProjectAt = function(id) {
+      const index = _projectList.findIndex((prj) => prj.id == id);
+      _projectList.splice(index, 1);
+      this.emit('save', _projectList, uniqueId);
+      this.emit('removeProject');
+    };
 
     this.getUniqueId = function() {
       return ++uniqueId;

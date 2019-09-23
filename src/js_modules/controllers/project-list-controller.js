@@ -3,6 +3,7 @@ import ProjectListView from '../views/project-list-view';
 import CrtProjectMdView from '../views/create-project-modal-view';
 import Validator from '../validator';
 import Project from '../factories/project';
+import ConfirmMdView from '../views/confirm-modal-view';
 
 export default class ProjectListController {
   constructor(storageModel) {
@@ -15,17 +16,35 @@ export default class ProjectListController {
     const _projectListModel = new ProjectListModel(storageModel);
     const _projectListView = new ProjectListView();
     const _crtProjectMdView = new CrtProjectMdView();
+    const _confirmMdView = new ConfirmMdView();
     const _validator = new Validator();
+
+    // private
+    let _confirmQueryPrjId = null;
 
     // add handlers for ProjectListView
     // delete prj
     _projectListView.on('deleteProject', (id) => {
-      console.log(`Project has been deleted ${id}`);
+      _confirmQueryPrjId = id;
+      _confirmMdView.displayModal();
     });
     // open prj
     _projectListView.on('openProject', (id) => {
       const prj = _projectListModel.getProjectAt(id);
       _projectListView.updateCurrentPrj(prj);
+    });
+
+    // add handlers for ConfirmMdView
+    // no
+    _confirmMdView.on('no', () => {
+      _confirmQueryPrjId = null;
+      _confirmMdView.closeModal();
+    });
+    // yes
+    _confirmMdView.on('yes', () => {
+      _projectListModel.removeProjectAt(_confirmQueryPrjId);
+      _confirmQueryPrjId = null;
+      _confirmMdView.closeModal();
     });
 
     // add handlers for CrtProjectMdView
@@ -45,7 +64,6 @@ export default class ProjectListController {
       if (_validator.isValidName(name)) {
         // create prj
         const id = _projectListModel.getUniqueId();
-        console.log(id);
         const prj = new Project(name, id);
         _projectListModel.addProject(prj);
 
@@ -61,6 +79,10 @@ export default class ProjectListController {
     _projectListModel.on('addProject', (prj) => {
       _projectListView.render(_projectListModel.getProjectList());
       _projectListView.updateCurrentPrj(prj);
+    });
+    _projectListModel.on('removeProject', () => {
+      _projectListView.render(_projectListModel.getProjectList());
+      _projectListView.updateCurrentPrj(_projectListModel.getFirstProject());
     });
 
     this.init = function() {

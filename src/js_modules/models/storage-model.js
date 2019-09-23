@@ -14,23 +14,35 @@ export default class StorageModel extends EventEmitter {
     const _PROJECT_LIST = 'projectList';
     const _PRJ_UNIQUE_ID = 'prjUniqueID';
 
-    const _DEFAULT_LIST = [{ name: 'Default', id: 0 }];
+    const _DEFAULT = {
+      _PROJECT_LIST: [{ name: 'Default', id: 0 }],
+      _PRJ_UNIQUE_ID: 0
+    };
+
+    // private
+    const _storageIsEmpty = () => {
+      const prjList = JSON.parse(_storage.getItem(_PROJECT_LIST));
+      if (!prjList || !prjList[0]) {
+        return true;
+      }
+      return false;
+    };
+    const _evalStorage = () => {
+      if (_storageIsEmpty()) {
+        _setDefault();
+      }
+    };
+    const _setDefault = () => {
+      this.setProjectList(_DEFAULT._PROJECT_LIST);
+      this.setPrjUniqueID(_DEFAULT._PRJ_UNIQUE_ID);
+    };
 
     this.getProjectList = function() {
-      const prjList = JSON.parse(_storage.getItem(_PROJECT_LIST));
-      if (prjList) {
-        return prjList;
-      }
-      return _DEFAULT_LIST;
+      return JSON.parse(_storage.getItem(_PROJECT_LIST));
     };
 
     this.getPrjUniqueID = function() {
-      const prjUniqueID = JSON.parse(_storage.getItem(_PRJ_UNIQUE_ID));
-      if (prjUniqueID) {
-        console.log(prjUniqueID);
-        return prjUniqueID;
-      }
-      return _DEFAULT_LIST[0].id;
+      return JSON.parse(_storage.getItem(_PRJ_UNIQUE_ID));
     };
 
     this.setProjectList = function(prjList) {
@@ -40,6 +52,9 @@ export default class StorageModel extends EventEmitter {
     this.setPrjUniqueID = function(id) {
       _storage.setItem(_PRJ_UNIQUE_ID, JSON.stringify(id));
     };
+
+    // init
+    _evalStorage();
 
     return this;
   }
