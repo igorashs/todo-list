@@ -25,7 +25,7 @@ export default class ProjectListModel extends EventEmitter {
       return _projectList[0];
     };
     this.addProject = function(prj) {
-      _projectList.push(prj);
+      _projectList.unshift(prj);
       this.emit('save', _projectList, uniqueId);
       this.emit('addProject', prj);
     };
