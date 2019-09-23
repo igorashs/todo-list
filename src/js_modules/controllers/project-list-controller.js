@@ -40,17 +40,17 @@ export default class ProjectListController {
     });
     // create project
     _crtProjectMdView.on('createProject', () => {
-      // create prj
       const name = _crtProjectMdView.getPrjName();
-      const id = _projectListModel.getUniqueId();
-      const prj = new Project(name, id);
 
-      if (_validator.projectIsValid(prj)) {
-        console.log(prj.name, 'valid');
+      if (_validator.isValidName(name)) {
+        // create prj
+        const id = _projectListModel.getUniqueId();
+        const prj = new Project(name, id);
         // add to storage
         // close && clear
+        _crtProjectMdView.displayValidName();
       } else {
-        console.log(prj.name, 'invalid');
+        _crtProjectMdView.displayInvalidName();
       }
     });
 

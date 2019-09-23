@@ -47,4 +47,12 @@ export default class CrtProjectMdView extends EventEmitter {
   getPrjName() {
     return document.getElementById('new-project-name').value;
   }
+
+  displayInvalidName() {
+    console.log('Invalid name');
+  }
+
+  displayValidName() {
+    console.log('valid name');
+  }
 }
