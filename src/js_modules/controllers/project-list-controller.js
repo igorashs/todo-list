@@ -1,6 +1,8 @@
 import ProjectListModel from '../models/project-list-model';
 import ProjectListView from '../views/project-list-view';
 import CrtProjectMdView from '../views/create-project-modal-view';
+import Validator from '../validator';
+import Project from '../factories/project';
 
 export default class ProjectListController {
   constructor(storageModel) {
@@ -13,6 +15,7 @@ export default class ProjectListController {
     const _projectListModel = new ProjectListModel(storageModel);
     const _projectListView = new ProjectListView();
     const _crtProjectMdView = new CrtProjectMdView();
+    const _validator = new Validator();
 
     // add handlers for ProjectListView
     // delete prj
@@ -37,11 +40,18 @@ export default class ProjectListController {
     });
     // create project
     _crtProjectMdView.on('createProject', () => {
+      // create prj
       const name = _crtProjectMdView.getPrjName();
-      // validation
-      // creation
-      // close && clear
-      console.log(name);
+      const id = _projectListModel.getUniqueId();
+      const prj = new Project(name, id);
+
+      if (_validator.projectIsValid(prj)) {
+        console.log(prj.name, 'valid');
+        // add to storage
+        // close && clear
+      } else {
+        console.log(prj.name, 'invalid');
+      }
     });
 
     this.init = function() {

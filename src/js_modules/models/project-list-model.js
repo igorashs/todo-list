@@ -11,6 +11,7 @@ export default class ProjectListModel extends EventEmitter {
 
     // private data
     const _projectList = storage.getProjectList();
+    let uniqueId = storage.getPrjUniqueID();
 
     this.getProjectList = function() {
       return _projectList;
@@ -23,6 +24,10 @@ export default class ProjectListModel extends EventEmitter {
     };
     this.addProject = function(prj) {};
     this.removeProjectAt = function(id) {};
+
+    this.getUniqueId = function() {
+      return ++uniqueId;
+    };
 
     return this;
   }
