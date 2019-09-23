@@ -13,6 +13,8 @@ export default class ProjectListModel extends EventEmitter {
     const _projectList = storage.getProjectList();
     let uniqueId = storage.getPrjUniqueID();
 
+    let _currentProject = null;
+
     this.getProjectList = function() {
       return _projectList;
     };
@@ -31,11 +33,19 @@ export default class ProjectListModel extends EventEmitter {
       const index = _projectList.findIndex((prj) => prj.id == id);
       _projectList.splice(index, 1);
       this.emit('save', _projectList, uniqueId);
-      this.emit('removeProject');
+      this.emit('removeProject', id);
     };
 
     this.getUniqueId = function() {
       return ++uniqueId;
+    };
+
+    this.getCurrentProject = function() {
+      return _currentProject;
+    };
+
+    this.setCurrentProject = function(prj) {
+      _currentProject = prj;
     };
 
     return this;

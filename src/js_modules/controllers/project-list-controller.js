@@ -31,6 +31,7 @@ export default class ProjectListController {
     // open prj
     _projectListView.on('openProject', (id) => {
       const prj = _projectListModel.getProjectAt(id);
+      _projectListModel.setCurrentProject(prj);
       _projectListView.updateCurrentPrj(prj);
     });
 
@@ -78,16 +79,26 @@ export default class ProjectListController {
     // add project
     _projectListModel.on('addProject', (prj) => {
       _projectListView.render(_projectListModel.getProjectList());
+      _projectListModel.setCurrentProject(prj);
       _projectListView.updateCurrentPrj(prj);
     });
-    _projectListModel.on('removeProject', () => {
+    // remove project
+    _projectListModel.on('removeProject', (removedPrjID) => {
       _projectListView.render(_projectListModel.getProjectList());
-      _projectListView.updateCurrentPrj(_projectListModel.getFirstProject());
+      const _currentPrjId = _projectListModel.getCurrentProject().id;
+      // set another project
+      if (_currentPrjId == removedPrjID) {
+        const curPrj = _projectListModel.getFirstProject();
+        _projectListModel.setCurrentProject(curPrj);
+        _projectListView.updateCurrentPrj(curPrj);
+      }
     });
 
     this.init = function() {
       _projectListView.render(_projectListModel.getProjectList());
-      _projectListView.updateCurrentPrj(_projectListModel.getFirstProject());
+      const curPrj = _projectListModel.getFirstProject();
+      _projectListModel.setCurrentProject(curPrj);
+      _projectListView.updateCurrentPrj(curPrj);
     };
 
     return this;
