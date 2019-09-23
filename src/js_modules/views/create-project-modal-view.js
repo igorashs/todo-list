@@ -49,10 +49,14 @@ export default class CrtProjectMdView extends EventEmitter {
   }
 
   displayInvalidName() {
-    console.log('Invalid name');
+    const nameLabel = document.getElementById('new-project-name-label');
+    nameLabel.classList.add('invalid');
+    nameLabel.textContent = 'Project Name length 1-20 characters';
   }
 
   displayValidName() {
-    console.log('valid name');
+    const nameLabel = document.getElementById('new-project-name-label');
+    nameLabel.classList.remove('invalid');
+    nameLabel.textContent = 'Project Name';
   }
 }
