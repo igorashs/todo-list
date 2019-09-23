@@ -15,9 +15,17 @@ export default class StorageController {
     const _projectListModel = new ProjectListModel(_storageModel);
 
     // add handlers for ProjectListModel
+    // save
     _projectListModel.on('save', (prjList, uniqueId) => {
       _storageModel.setProjectList(prjList);
       _storageModel.setPrjUniqueID(uniqueId);
+    });
+    // changeProject
+    _projectListModel.on('changeProject', (curPrj) => {
+      if (curPrj) {
+        //! load todoList from new prj
+        console.log(curPrj.name);
+      }
     });
 
     // controllers
