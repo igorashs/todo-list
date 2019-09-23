@@ -2,11 +2,14 @@ import { EventEmitter } from 'events';
 
 export default class ProjectListView extends EventEmitter {
   constructor() {
-    super();
-    if (this.instance) {
-      return this.instance;
+    // singleton
+    if (ProjectListView.instance) {
+      return ProjectListView.instance;
     }
-    this.instance = this;
+    super();
+    ProjectListView.instance = this;
+
+    return this;
   }
 
   render(prjList) {

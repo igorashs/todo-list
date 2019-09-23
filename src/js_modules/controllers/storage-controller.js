@@ -1,8 +1,11 @@
 export default class StorageController {
   constructor() {
-    if (this.instance) {
-      return this.instance;
+    // singleton
+    if (StorageController.instance) {
+      return StorageController.instance;
     }
-    this.instance = this;
+    StorageController.instance = this;
+
+    return this;
   }
 }

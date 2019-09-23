@@ -2,11 +2,12 @@ import { EventEmitter } from 'events';
 
 export default class StorageModel extends EventEmitter {
   constructor(storage) {
-    super();
-    if (this.instance) {
-      return this.instance;
+    // singleton
+    if (StorageModel.instance) {
+      return StorageModel.instance;
     }
-    this.instance = this;
+    super();
+    StorageModel.instance = this;
 
     // private data
     const _storage = storage;
@@ -36,5 +37,7 @@ export default class StorageModel extends EventEmitter {
     this.setPrjUniqueID = function(id) {
       _storage.setItem(_PRJ_UNIQUE_ID, JSON.stringify(id));
     };
+
+    return this;
   }
 }

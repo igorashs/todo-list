@@ -3,10 +3,11 @@ import ProjectListView from '../views/project-list-view';
 
 export default class ProjectListController {
   constructor(storageModel) {
-    if (this.instance) {
-      return this.instance;
+    // singleton
+    if (ProjectListController.instance) {
+      return ProjectListController.instance;
     }
-    this.instance = this;
+    ProjectListController.instance = this;
 
     const _projectListModel = new ProjectListModel(storageModel);
     const _projectListView = new ProjectListView();
@@ -22,5 +23,7 @@ export default class ProjectListController {
     this.init = function() {
       _projectListView.render(_projectListModel.getProjectList());
     };
+
+    return this;
   }
 }
