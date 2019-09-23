@@ -1,4 +1,6 @@
-export default class TodoListView {
+import { EventEmitter } from 'events';
+
+export default class TodoListView extends EventEmitter {
   constructor() {
     // singleton
     if (TodoListView.instance) {
