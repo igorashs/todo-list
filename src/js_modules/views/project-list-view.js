@@ -50,6 +50,10 @@ export default class ProjectListView extends EventEmitter {
 
   updateCurrentPrj(prj) {
     const curPrjView = document.querySelector('.current-project');
-    curPrjView.textContent = prj.name;
+    if (prj) {
+      curPrjView.textContent = prj.name;
+    } else {
+      curPrjView.textContent = '_NO_PROJECT_';
+    }
   }
 }
