@@ -1,5 +1,6 @@
 import TodoListModel from '../models/todo-list-model';
 import TodoListView from '../views/todo-list-view';
+import InfoTodoMdView from '../views/info-todo-modal-view';
 
 export default class TodoListController {
   constructor() {
@@ -11,6 +12,7 @@ export default class TodoListController {
 
     const _todoListModel = new TodoListModel();
     const _todoListView = new TodoListView();
+    const _infoTodoMdView = new InfoTodoMdView();
 
     // add handlers for TodoListModel
     // load
@@ -26,6 +28,7 @@ export default class TodoListController {
     // show full info
     _todoListView.on('showFullInfo', (id) => {
       // !display full info
+      _infoTodoMdView.displayModal();
       console.log('full info', id);
     });
     // complete
@@ -42,6 +45,13 @@ export default class TodoListController {
     _todoListView.on('deleteTodo', (id) => {
       // ! delete
       console.log('delete', id);
+    });
+
+    // add handlers for InfoTodoMdView
+    // cancel
+    _infoTodoMdView.on('cancelModal', () => {
+      // !clear
+      _infoTodoMdView.closeModal();
     });
 
     return this;
