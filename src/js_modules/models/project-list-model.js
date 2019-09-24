@@ -49,6 +49,12 @@ export default class ProjectListModel extends EventEmitter {
       this.emit('changeProject', prj);
     };
 
+    this.updateProject = function(prj) {
+      const index = _projectList.findIndex((p) => p.id == prj.id);
+      _projectList.splice(index, 1, prj);
+      this.emit('save', _projectList, uniqueId);
+    };
+
     return this;
   }
 }

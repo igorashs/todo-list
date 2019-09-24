@@ -3,6 +3,8 @@ import TodoListView from '../views/todo-list-view';
 import InfoTodoMdView from '../views/info-todo-modal-view';
 import ConfirmMdView from '../views/confirm-modal-view';
 import EditTodoMdView from '../views/edit-todo-modal-view';
+import Validator from '../validator';
+import Todo from '../factories/todo';
 
 export default class TodoListController {
   constructor() {
@@ -17,9 +19,46 @@ export default class TodoListController {
     const _infoTodoMdView = new InfoTodoMdView();
     const _confirmMdView = new ConfirmMdView();
     const _editTodoMdView = new EditTodoMdView();
+    const _validator = new Validator();
 
     // private
     let _confirmQueryTodoId = null;
+    let _editQueryTodoId = null;
+
+    // add handlers for EditTodoMdView
+    // cancel
+    _editTodoMdView.on('cancelModal', () => {
+      _editQueryTodoId = null;
+      _editTodoMdView.closeModal();
+    });
+
+    // update
+    _editTodoMdView.on('updateTodo', () => {
+      const newTitle = _editTodoMdView.getTitle();
+      const newDate = _editTodoMdView.getDate();
+      const newDescription = _editTodoMdView.getDescription();
+      const newPriority = _editTodoMdView.getPriority();
+
+      if (_validator.isValidName(newTitle)) {
+        _editTodoMdView.displayValidTitle();
+        if (_validator.isValidDate(newDate)) {
+          _editTodoMdView.displayValidDate();
+
+          const todo = _todoListModel.getTodoAt(_editQueryTodoId);
+          todo.title = newTitle;
+          todo.date = newDate;
+          todo.description = newDescription;
+          todo.getPriority = newPriority;
+          _todoListModel.updateTodo(todo);
+          _editQueryTodoId = null;
+          _editTodoMdView.closeModal();
+        } else {
+          _editTodoMdView.displayInvalidDate();
+        }
+      } else {
+        _editTodoMdView.displayInvalidTitle();
+      }
+    });
 
     // add handlers for ConfirmMdView
     // no
@@ -66,7 +105,7 @@ export default class TodoListController {
       const todo = _todoListModel.getTodoAt(id);
       _editTodoMdView.displayModal();
       _editTodoMdView.fillInputs(todo);
-      console.log('edit', id);
+      _editQueryTodoId = id;
     });
     // delete
     _todoListView.on('deleteTodo', (id) => {

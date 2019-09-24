@@ -15,4 +15,11 @@ export default class Validator {
     }
     return false;
   }
+
+  isValidDate(date) {
+    if (date.length > 0) {
+      return true;
+    }
+    return false;
+  }
 }

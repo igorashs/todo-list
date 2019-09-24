@@ -32,8 +32,14 @@ export default class TodoListModel extends EventEmitter {
       this.emit('saveCurrentProject', _curProject);
     };
 
+    this.updateTodo = function(todo) {
+      const index = _curProject.todoList.findIndex((td) => td.id == todo.id);
+      _curProject.todoList.splice(index, 1, todo);
+      this.emit('saveCurrentProject', _curProject);
+    };
+
     this.getUniqueId = function() {
-      return _curProject.todoUniqueID;
+      return ++_curProject.todoUniqueID;
     };
 
     return this;
