@@ -24,7 +24,7 @@ export default class StorageModel extends EventEmitter {
             {
               id: 0,
               title: 'Demo Todo',
-              date: '30 feb 2069',
+              date: '1970-01-01',
               description: 'Hello There this is a demo todo item',
               priority: 'medium',
               completed: false
