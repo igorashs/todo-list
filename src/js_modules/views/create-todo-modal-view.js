@@ -16,6 +16,10 @@ export default class CreateTodoMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('cancelModal');
       });
+    // open
+    document.getElementById('new-todo-btn').addEventListener('click', () => {
+      this.emit('openModal');
+    });
     // create
     document
       .querySelector('.new-todo .create')
