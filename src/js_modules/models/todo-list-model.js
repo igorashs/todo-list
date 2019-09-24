@@ -47,6 +47,10 @@ export default class TodoListModel extends EventEmitter {
       this.emit('saveCurrentProject', _curProject);
     };
 
+    this.hasProject = function() {
+      return _curProject ? true : false;
+    };
+
     return this;
   }
 }
