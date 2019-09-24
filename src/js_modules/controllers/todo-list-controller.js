@@ -91,7 +91,7 @@ export default class TodoListController {
           todo.title = newTitle;
           todo.date = newDate;
           todo.description = newDescription;
-          todo.getPriority = newPriority;
+          todo.priority = newPriority;
           _todoListModel.updateTodo(todo);
           _editQueryTodoId = null;
           _editTodoMdView.closeModal();
