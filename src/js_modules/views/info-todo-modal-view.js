@@ -11,4 +11,14 @@ export default class InfoTodoMdView extends EventEmitter {
 
     return this;
   }
+
+  displayModal() {
+    const modalView = document.querySelector('.info-todo');
+    modalView.parentElement.classList.remove('display-none');
+  }
+
+  closeModal() {
+    const modalView = document.querySelector('.info-todo');
+    modalView.parentElement.classList.add('display-none');
+  }
 }
