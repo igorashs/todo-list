@@ -26,6 +26,16 @@ export default class TodoListModel extends EventEmitter {
       return _curProject.todoList.find((todo) => todo.id == id);
     };
 
+    this.removeTodoAt = function(id) {
+      const index = _curProject.todoList.findIndex((todo) => todo.id == id);
+      _curProject.todoList.splice(index, 1);
+      this.emit('saveCurrentProject', _curProject);
+    };
+
+    this.getUniqueId = function() {
+      return _curProject.todoUniqueID;
+    };
+
     return this;
   }
 }

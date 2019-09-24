@@ -30,7 +30,7 @@ export default class TodoListController {
     // yes
     _confirmMdView.on('yes', () => {
       if (_confirmQueryTodoId) {
-        // _todoListModel.removeTodoAt(_confirmQueryTodoId);
+        _todoListModel.removeTodoAt(_confirmQueryTodoId);
         _confirmQueryTodoId = null;
         _confirmMdView.closeModal();
       }
@@ -65,10 +65,8 @@ export default class TodoListController {
     });
     // delete
     _todoListView.on('deleteTodo', (id) => {
-      // ! delete
       _confirmQueryTodoId = id;
       _confirmMdView.displayModal();
-      console.log('delete', id);
     });
 
     // add handlers for InfoTodoMdView

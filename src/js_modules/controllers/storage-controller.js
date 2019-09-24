@@ -35,6 +35,12 @@ export default class StorageController {
       }
     });
 
+    // add handlers for TodoListModel
+    // save
+    _todoListModel.on('saveCurrentProject', (curPrj) => {
+      _projectListModel.setCurrentProject(curPrj);
+    });
+
     this.init = function() {
       _projectListController.init();
     };
