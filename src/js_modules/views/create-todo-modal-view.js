@@ -1,13 +1,13 @@
 import { EventEmitter } from 'events';
 
-export default class EditTodoMdView extends EventEmitter {
+export default class CreateTodoMdView extends EventEmitter {
   constructor() {
     // singleton
-    if (EditTodoMdView.instance) {
-      return EditTodoMdView.instance;
+    if (CreateTodoMdView.instance) {
+      return CreateTodoMdView.instance;
     }
     super();
-    EditTodoMdView.instance = this;
+    CreateTodoMdView.instance = this;
 
     // assign events
     // cancel
