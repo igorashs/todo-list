@@ -5,6 +5,7 @@ import ConfirmMdView from '../views/confirm-modal-view';
 import EditTodoMdView from '../views/edit-todo-modal-view';
 import Validator from '../validator';
 import CreateTodoMdView from '../views/create-todo-modal-view';
+import Todo from '../factories/todo';
 
 export default class TodoListController {
   constructor() {
@@ -29,7 +30,7 @@ export default class TodoListController {
     // add handlers for EditTodoMdView
     // cancel
     _createTodoMdView.on('cancelModal', () => {
-      // clear inputs
+      _createTodoMdView.clear();
       _createTodoMdView.closeModal();
     });
     // open modal
@@ -38,9 +39,34 @@ export default class TodoListController {
     });
     // create todo
     _createTodoMdView.on('createTodo', () => {
-      // create todo item;
-      // clear inputs
-      // save changes
+      const title = _createTodoMdView.getTitle();
+      const date = _createTodoMdView.getDate();
+      const description = _createTodoMdView.getDescription();
+      const priority = _createTodoMdView.getPriority();
+
+      if (_validator.isValidName(title)) {
+        _createTodoMdView.displayValidTitle();
+        if (_validator.isValidDate(date)) {
+          _createTodoMdView.displayValidDate();
+
+          const id = _todoListModel.getUniqueId();
+          const newTodo = new Todo(
+            id,
+            title,
+            date,
+            description,
+            priority,
+            false
+          );
+          _todoListModel.addTodo(newTodo);
+          _createTodoMdView.clear();
+          _createTodoMdView.closeModal();
+        } else {
+          _createTodoMdView.displayInvalidDate();
+        }
+      } else {
+        _createTodoMdView.displayInvalidTitle();
+      }
     });
 
     // add handlers for EditTodoMdView
