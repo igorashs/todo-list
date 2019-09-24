@@ -38,14 +38,18 @@ export default class ProjectListController {
     // add handlers for ConfirmMdView
     // no
     _confirmMdView.on('no', () => {
-      _confirmQueryPrjId = null;
-      _confirmMdView.closeModal();
+      if (_confirmQueryPrjId) {
+        _confirmQueryPrjId = null;
+        _confirmMdView.closeModal();
+      }
     });
     // yes
     _confirmMdView.on('yes', () => {
-      _projectListModel.removeProjectAt(_confirmQueryPrjId);
-      _confirmQueryPrjId = null;
-      _confirmMdView.closeModal();
+      if (_confirmQueryPrjId) {
+        _projectListModel.removeProjectAt(_confirmQueryPrjId);
+        _confirmQueryPrjId = null;
+        _confirmMdView.closeModal();
+      }
     });
 
     // add handlers for CrtProjectMdView

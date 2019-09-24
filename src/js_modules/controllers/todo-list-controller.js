@@ -1,6 +1,7 @@
 import TodoListModel from '../models/todo-list-model';
 import TodoListView from '../views/todo-list-view';
 import InfoTodoMdView from '../views/info-todo-modal-view';
+import ConfirmMdView from '../views/confirm-modal-view';
 
 export default class TodoListController {
   constructor() {
@@ -13,6 +14,27 @@ export default class TodoListController {
     const _todoListModel = new TodoListModel();
     const _todoListView = new TodoListView();
     const _infoTodoMdView = new InfoTodoMdView();
+    const _confirmMdView = new ConfirmMdView();
+
+    // private
+    let _confirmQueryTodoId = null;
+
+    // add handlers for ConfirmMdView
+    // no
+    _confirmMdView.on('no', () => {
+      if (_confirmQueryTodoId) {
+        _confirmQueryTodoId = null;
+        _confirmMdView.closeModal();
+      }
+    });
+    // yes
+    _confirmMdView.on('yes', () => {
+      if (_confirmQueryTodoId) {
+        // _todoListModel.removeTodoAt(_confirmQueryTodoId);
+        _confirmQueryTodoId = null;
+        _confirmMdView.closeModal();
+      }
+    });
 
     // add handlers for TodoListModel
     // load
@@ -44,6 +66,8 @@ export default class TodoListController {
     // delete
     _todoListView.on('deleteTodo', (id) => {
       // ! delete
+      _confirmQueryTodoId = id;
+      _confirmMdView.displayModal();
       console.log('delete', id);
     });
 
