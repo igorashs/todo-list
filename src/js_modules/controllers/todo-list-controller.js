@@ -35,7 +35,9 @@ export default class TodoListController {
     });
     // open modal
     _createTodoMdView.on('openModal', () => {
-      _createTodoMdView.displayModal();
+      if (_todoListModel.hasProject()) {
+        _createTodoMdView.displayModal();
+      }
     });
     // create todo
     _createTodoMdView.on('createTodo', () => {
