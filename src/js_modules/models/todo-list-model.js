@@ -42,6 +42,11 @@ export default class TodoListModel extends EventEmitter {
       return ++_curProject.todoUniqueID;
     };
 
+    this.addTodo = function(todo) {
+      _curProject.todoList.unshift(todo);
+      this.emit('saveCurrentProject', _curProject);
+    };
+
     return this;
   }
 }
