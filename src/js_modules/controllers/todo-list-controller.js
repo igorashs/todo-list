@@ -2,6 +2,7 @@ import TodoListModel from '../models/todo-list-model';
 import TodoListView from '../views/todo-list-view';
 import InfoTodoMdView from '../views/info-todo-modal-view';
 import ConfirmMdView from '../views/confirm-modal-view';
+import EditTodoMdView from '../views/edit-todo-modal-view';
 
 export default class TodoListController {
   constructor() {
@@ -15,6 +16,7 @@ export default class TodoListController {
     const _todoListView = new TodoListView();
     const _infoTodoMdView = new InfoTodoMdView();
     const _confirmMdView = new ConfirmMdView();
+    const _editTodoMdView = new EditTodoMdView();
 
     // private
     let _confirmQueryTodoId = null;
@@ -61,6 +63,9 @@ export default class TodoListController {
     // edit
     _todoListView.on('editTodo', (id) => {
       // ! edit
+      const todo = _todoListModel.getTodoAt(id);
+      _editTodoMdView.displayModal();
+      _editTodoMdView.fillInputs(todo);
       console.log('edit', id);
     });
     // delete
