@@ -4,7 +4,6 @@ import InfoTodoMdView from '../views/info-todo-modal-view';
 import ConfirmMdView from '../views/confirm-modal-view';
 import EditTodoMdView from '../views/edit-todo-modal-view';
 import Validator from '../validator';
-import Todo from '../factories/todo';
 
 export default class TodoListController {
   constructor() {
@@ -101,7 +100,6 @@ export default class TodoListController {
     });
     // edit
     _todoListView.on('editTodo', (id) => {
-      // ! edit
       const todo = _todoListModel.getTodoAt(id);
       _editTodoMdView.displayModal();
       _editTodoMdView.fillInputs(todo);
