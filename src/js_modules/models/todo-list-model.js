@@ -22,6 +22,10 @@ export default class TodoListModel extends EventEmitter {
       this.emit('removeProject');
     };
 
+    this.getTodoAt = function(id) {
+      return _curProject.todoList.find((todo) => todo.id == id);
+    };
+
     return this;
   }
 }

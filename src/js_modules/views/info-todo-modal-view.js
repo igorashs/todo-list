@@ -19,6 +19,13 @@ export default class InfoTodoMdView extends EventEmitter {
     return this;
   }
 
+  showFullInfo(todo) {
+    document.getElementById('info-todo-title').textContent = todo.title;
+    document.getElementById('info-due-date').textContent = todo.date;
+    document.getElementById('info-description').textContent = todo.description;
+    document.getElementById('info-priority').textContent = todo.priority;
+  }
+
   displayModal() {
     const modalView = document.querySelector('.info-todo');
     modalView.parentElement.classList.remove('display-none');

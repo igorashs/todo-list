@@ -27,9 +27,9 @@ export default class TodoListController {
     // add handlers for TodoListView
     // show full info
     _todoListView.on('showFullInfo', (id) => {
-      // !display full info
+      const todo = _todoListModel.getTodoAt(id);
       _infoTodoMdView.displayModal();
-      console.log('full info', id);
+      _infoTodoMdView.showFullInfo(todo);
     });
     // complete
     _todoListView.on('completeTodo', (id) => {
@@ -50,7 +50,6 @@ export default class TodoListController {
     // add handlers for InfoTodoMdView
     // cancel
     _infoTodoMdView.on('cancelModal', () => {
-      // !clear
       _infoTodoMdView.closeModal();
     });
 
