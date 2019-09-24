@@ -30,6 +30,29 @@ export default class CreateTodoMdView extends EventEmitter {
     return this;
   }
 
+  getTitle() {
+    return document.getElementById('new-todo-title').value;
+  }
+
+  getDate() {
+    return document.getElementById('new-due-date').value;
+  }
+
+  getDescription() {
+    return document.getElementById('new-description').value;
+  }
+
+  getPriority() {
+    return document.getElementById('new-priority').value;
+  }
+
+  clear() {
+    document.getElementById('new-todo-title').value = '';
+    document.getElementById('new-due-date').value = '';
+    document.getElementById('new-description').value = '';
+    document.getElementById('new-priority').value = '';
+  }
+
   displayModal() {
     const modalView = document.querySelector('.new-todo');
     modalView.parentElement.classList.remove('display-none');
@@ -38,5 +61,29 @@ export default class CreateTodoMdView extends EventEmitter {
   closeModal() {
     const modalView = document.querySelector('.new-todo');
     modalView.parentElement.classList.add('display-none');
+  }
+
+  displayInvalidTitle() {
+    const titleLabel = document.getElementById('new-todo-title-label');
+    titleLabel.classList.add('invalid');
+    titleLabel.textContent = 'Todo Title length 1-20 characters';
+  }
+
+  displayValidTitle() {
+    const titleLabel = document.getElementById('new-todo-title-label');
+    titleLabel.classList.remove('invalid');
+    titleLabel.textContent = 'Title';
+  }
+
+  displayInvalidDate() {
+    const titleLabel = document.getElementById('new-due-date-label');
+    titleLabel.classList.add('invalid');
+    titleLabel.textContent = 'Select a date';
+  }
+
+  displayValidDate() {
+    const titleLabel = document.getElementById('new-due-date-label');
+    titleLabel.classList.remove('invalid');
+    titleLabel.textContent = 'Due Date';
   }
 }
