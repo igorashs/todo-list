@@ -4,6 +4,7 @@ import InfoTodoMdView from '../views/info-todo-modal-view';
 import ConfirmMdView from '../views/confirm-modal-view';
 import EditTodoMdView from '../views/edit-todo-modal-view';
 import Validator from '../validator';
+import CreateTodoMdView from '../views/create-todo-modal-view';
 
 export default class TodoListController {
   constructor() {
@@ -18,6 +19,7 @@ export default class TodoListController {
     const _infoTodoMdView = new InfoTodoMdView();
     const _confirmMdView = new ConfirmMdView();
     const _editTodoMdView = new EditTodoMdView();
+    const _createTodoMdView = new CreateTodoMdView();
     const _validator = new Validator();
 
     // private
@@ -26,11 +28,27 @@ export default class TodoListController {
 
     // add handlers for EditTodoMdView
     // cancel
+    _createTodoMdView.on('cancelModal', () => {
+      // clear inputs
+      _createTodoMdView.closeModal();
+    });
+    // open modal
+    _createTodoMdView.on('openModal', () => {
+      _createTodoMdView.displayModal();
+    });
+    // create todo
+    _createTodoMdView.on('createTodo', () => {
+      // create todo item;
+      // clear inputs
+      // save changes
+    });
+
+    // add handlers for EditTodoMdView
+    // cancel
     _editTodoMdView.on('cancelModal', () => {
       _editQueryTodoId = null;
       _editTodoMdView.closeModal();
     });
-
     // update
     _editTodoMdView.on('updateTodo', () => {
       const newTitle = _editTodoMdView.getTitle();
