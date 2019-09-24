@@ -13,6 +13,7 @@ export default class StorageModel extends EventEmitter {
     const _storage = storage;
     const _PROJECT_LIST = 'projectList';
     const _PRJ_UNIQUE_ID = 'prjUniqueID';
+    const _TODO_UNIQUE_ID = 'todoUniqueID';
 
     const _DEFAULT = {
       _PROJECT_LIST: [
@@ -21,13 +22,15 @@ export default class StorageModel extends EventEmitter {
           id: 0,
           todoList: [
             {
+              id: 0,
               title: 'Demo Todo',
               date: '30 feb 2069',
               description: 'Hello There this is a demo todo item',
               priority: 'medium',
               completed: false
             }
-          ]
+          ],
+          [_TODO_UNIQUE_ID]: 0
         }
       ],
       _PRJ_UNIQUE_ID: 0

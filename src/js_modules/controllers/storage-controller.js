@@ -1,7 +1,8 @@
 import ProjectListModel from '../models/project-list-model';
-import ProjectListController from './project-list-controller';
 import StorageModel from '../models/storage-model';
-
+import TodoListModel from '../models/todo-list-model';
+import ProjectListController from './project-list-controller';
+import TodoListController from './todo-list-controller';
 export default class StorageController {
   constructor(storage) {
     // singleton
@@ -13,6 +14,11 @@ export default class StorageController {
     // models
     const _storageModel = new StorageModel(storage);
     const _projectListModel = new ProjectListModel(_storageModel);
+    const _todoListModel = new TodoListModel();
+
+    // controllers
+    const _projectListController = new ProjectListController(_storageModel);
+    const _todoListController = new TodoListController();
 
     // add handlers for ProjectListModel
     // save
@@ -23,13 +29,11 @@ export default class StorageController {
     // changeProject
     _projectListModel.on('changeProject', (curPrj) => {
       if (curPrj) {
-        //! load todoList from new prj
-        console.log(curPrj.name);
+        _todoListModel.loadProject(curPrj);
+      } else {
+        _todoListModel.removeProject();
       }
     });
-
-    // controllers
-    const _projectListController = new ProjectListController(_storageModel);
 
     this.init = function() {
       _projectListController.init();
