@@ -24,7 +24,10 @@ export default class TodoListView extends EventEmitter {
 
     function _assignEvents(element) {
       element.addEventListener('click', (e) => {
-        if (e.target.classList.contains('short-description')) {
+        if (
+          e.target.classList.contains('short-description') ||
+          e.target.classList.contains('title')
+        ) {
           this.emit('showFullInfo', e.currentTarget.dataset.id);
         }
         if (e.target.classList.contains('complete')) {
