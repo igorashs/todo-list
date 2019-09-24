@@ -50,7 +50,7 @@ export default class CreateTodoMdView extends EventEmitter {
     document.getElementById('new-todo-title').value = '';
     document.getElementById('new-due-date').value = '';
     document.getElementById('new-description').value = '';
-    document.getElementById('new-priority').value = '';
+    document.getElementById('new-priority').value = 'high';
   }
 
   displayModal() {
