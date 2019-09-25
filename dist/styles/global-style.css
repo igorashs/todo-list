@@ -113,6 +113,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 1rem;
   overflow: auto;
+  box-shadow: inset 0 0 5px 5px rgba(49, 41, 47, 0.5);
 }
 /* +project-element */
 .project-element {
@@ -120,9 +121,9 @@ body {
   height: 64px;
   margin-bottom: 1rem;
   box-shadow: 0 0 2px 4px rgb(56, 5, 52);
+  cursor: pointer;
 }
 .project-name {
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,6 +217,7 @@ body {
   box-shadow: 0 0 5px 2px rgb(0, 0, 0);
   overflow: hidden;
   cursor: pointer;
+  transition-duration: 0.5s;
 }
 .short-description {
   text-shadow: 0 0 10px #000;
@@ -242,7 +244,9 @@ body {
     'c o'
     'c d';
   transform: translate(100%, -100%);
-  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+  transition-delay: 0.2s;
   background-color: rgba(0, 0, 0, 1);
   box-shadow: inset 0 0 20px 10px rgba(3, 47, 77, 0.8);
   grid-row-gap: 3px;
@@ -275,7 +279,7 @@ body {
   transform: translate(0, -100%);
 }
 .todo-item:hover {
-  box-shadow: inset 0 0 5px 2px rgb(0, 0, 0);
+  box-shadow: 0 0 10px 2px rgb(0, 0, 0);
 }
 .todo-options .complete:hover {
   background-color: rgba(35, 153, 231, 0.6);
@@ -563,4 +567,32 @@ input[type='date']::-webkit-calendar-picker-indicator {
 input[type='date']::-webkit-calendar-picker-indicator:hover {
   color: rgb(83, 119, 122);
 }
+
+/* +priority rules */
+.priority-low {
+  background-color: rgba(11, 80, 77, 0.6);
+}
+.priority-medium {
+  background-color: rgba(11, 80, 15, 0.6);
+}
+.priority-high {
+  background-color: rgba(80, 11, 11, 0.6);
+}
+
+.complete {
+  background-color: rgba(59, 59, 59, 0.6);
+}
+.complete .short-description,
+.complete .todo-date {
+  text-decoration: line-through;
+  text-decoration-color: rgb(54, 40, 47);
+}
+.complete .button.complete {
+  background-color: rgba(124, 124, 124, 0.6);
+}
+.complete .button.complete:hover {
+  background-color: rgba(124, 124, 124, 0.7);
+}
+/* -priority rules */
+
 /* -additional styles */
