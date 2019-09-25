@@ -355,10 +355,16 @@ body {
 }
 
 .modal-content label {
-  padding-bottom: 0.2rem;
+  height: 2rem;
+  margin-bottom: 0.2rem;
   font-size: 1.5rem;
   color: rgb(64, 207, 226);
   text-shadow: 0 0 2px #000;
+}
+
+.modal-content .invalid {
+  font-size: 1.2rem;
+  color: rgb(255, 114, 114);
 }
 
 .modal-content input {
