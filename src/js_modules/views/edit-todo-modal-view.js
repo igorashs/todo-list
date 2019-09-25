@@ -26,9 +26,12 @@ export default class EditTodoMdView extends EventEmitter {
 
   fillInputs(todo) {
     document.getElementById('edit-todo-title').value = todo.title;
-    document.getElementById('edit-due-date').value = todo.date;
     document.getElementById('edit-description').value = todo.description;
     document.getElementById('edit-priority').value = todo.priority;
+  }
+
+  fillDate(date) {
+    document.getElementById('edit-due-date').value = date;
   }
 
   getTitle() {
