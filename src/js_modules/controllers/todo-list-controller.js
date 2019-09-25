@@ -6,7 +6,8 @@ import EditTodoMdView from '../views/edit-todo-modal-view';
 import Validator from '../validator';
 import CreateTodoMdView from '../views/create-todo-modal-view';
 import Todo from '../factories/todo';
-import { format, compareAsc, parse } from 'date-fns';
+import { format, parse } from 'date-fns';
+import TodoSorter from '../todo-sorter';
 
 export default class TodoListController {
   constructor() {
@@ -64,6 +65,13 @@ export default class TodoListController {
             false
           );
           _todoListModel.addTodo(newTodo);
+
+          // sort by Date (desc)
+          TodoSorter.sortByDate(
+            _todoListModel.getCurrentProject(),
+            DATE_FORMAT
+          );
+          _todoListModel.saveAndRender();
           _createTodoMdView.clear();
           _createTodoMdView.closeModal();
         } else {
@@ -100,6 +108,13 @@ export default class TodoListController {
           );
           todo.description = newDescription;
           todo.priority = newPriority;
+
+          // sort by Date (desc)
+          TodoSorter.sortByDate(
+            _todoListModel.getCurrentProject(),
+            DATE_FORMAT
+          );
+
           _todoListModel.updateTodo(todo);
           _editQueryTodoId = null;
           _editTodoMdView.closeModal();

@@ -44,6 +44,9 @@ export default class TodoListModel extends EventEmitter {
 
     this.addTodo = function(todo) {
       _curProject.todoList.unshift(todo);
+    };
+
+    this.saveAndRender = function() {
       this.emit('saveCurrentProject', _curProject);
     };
 
