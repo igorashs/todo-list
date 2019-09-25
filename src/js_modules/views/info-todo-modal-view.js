@@ -16,6 +16,13 @@ export default class InfoTodoMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('cancelModal');
       });
+    document
+      .querySelector('.info-todo')
+      .parentElement.addEventListener('click', (e) => {
+        if (e.target == e.currentTarget) {
+          this.emit('cancelModal');
+        }
+      });
     return this;
   }
 

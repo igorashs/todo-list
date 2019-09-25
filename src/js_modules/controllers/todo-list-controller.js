@@ -6,6 +6,8 @@ import EditTodoMdView from '../views/edit-todo-modal-view';
 import Validator from '../validator';
 import CreateTodoMdView from '../views/create-todo-modal-view';
 import Todo from '../factories/todo';
+import { format, parse } from 'date-fns';
+import TodoSorter from '../todo-sorter';
 
 export default class TodoListController {
   constructor() {
@@ -26,6 +28,8 @@ export default class TodoListController {
     // private
     let _confirmQueryTodoId = null;
     let _editQueryTodoId = null;
+    const DATE_FORMAT = 'MMM do y';
+    const DATE_DEFAULT_FORMAT = 'yyyy-MM-dd';
 
     // add handlers for EditTodoMdView
     // cancel
@@ -55,12 +59,19 @@ export default class TodoListController {
           const newTodo = new Todo(
             id,
             title,
-            date,
+            format(parse(date, DATE_DEFAULT_FORMAT, new Date()), DATE_FORMAT),
             description,
             priority,
             false
           );
           _todoListModel.addTodo(newTodo);
+
+          // sort by Date (desc)
+          TodoSorter.sortByDate(
+            _todoListModel.getCurrentProject(),
+            DATE_FORMAT
+          );
+          _todoListModel.saveAndRender();
           _createTodoMdView.clear();
           _createTodoMdView.closeModal();
         } else {
@@ -91,9 +102,19 @@ export default class TodoListController {
 
           const todo = _todoListModel.getTodoAt(_editQueryTodoId);
           todo.title = newTitle;
-          todo.date = newDate;
+          todo.date = format(
+            parse(newDate, DATE_DEFAULT_FORMAT, new Date()),
+            DATE_FORMAT
+          );
           todo.description = newDescription;
           todo.priority = newPriority;
+
+          // sort by Date (desc)
+          TodoSorter.sortByDate(
+            _todoListModel.getCurrentProject(),
+            DATE_FORMAT
+          );
+
           _todoListModel.updateTodo(todo);
           _editQueryTodoId = null;
           _editTodoMdView.closeModal();
@@ -153,7 +174,12 @@ export default class TodoListController {
     _todoListView.on('editTodo', (id) => {
       const todo = _todoListModel.getTodoAt(id);
       _editTodoMdView.displayModal();
+      const formatedDate = format(
+        parse(todo.date, DATE_FORMAT, new Date()),
+        DATE_DEFAULT_FORMAT
+      );
       _editTodoMdView.fillInputs(todo);
+      _editTodoMdView.fillDate(formatedDate);
       _editQueryTodoId = id;
     });
     // delete

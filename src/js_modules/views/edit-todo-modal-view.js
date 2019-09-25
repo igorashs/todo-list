@@ -16,6 +16,13 @@ export default class EditTodoMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('cancelModal');
       });
+    document
+      .querySelector('.edit-todo')
+      .parentElement.addEventListener('click', (e) => {
+        if (e.target == e.currentTarget) {
+          this.emit('cancelModal');
+        }
+      });
     // update
     document.querySelector('.edit-todo .edit').addEventListener('click', () => {
       this.emit('updateTodo');
@@ -26,9 +33,12 @@ export default class EditTodoMdView extends EventEmitter {
 
   fillInputs(todo) {
     document.getElementById('edit-todo-title').value = todo.title;
-    document.getElementById('edit-due-date').value = todo.date;
     document.getElementById('edit-description').value = todo.description;
     document.getElementById('edit-priority').value = todo.priority;
+  }
+
+  fillDate(date) {
+    document.getElementById('edit-due-date').value = date;
   }
 
   getTitle() {

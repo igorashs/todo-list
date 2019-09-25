@@ -20,6 +20,14 @@ export default class CrtProjectMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('cancelModal');
       });
+    document
+      .querySelector('.new-project')
+      .parentElement.addEventListener('click', (e) => {
+        if (e.target == e.currentTarget) {
+          this.emit('cancelModal');
+        }
+      });
+
     // create project
     document
       .querySelector('.new-project .create')

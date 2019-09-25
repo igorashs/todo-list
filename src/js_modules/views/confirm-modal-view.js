@@ -16,6 +16,14 @@ export default class ConfirmMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('no');
       });
+    document
+      .querySelector('.confirmation')
+      .parentElement.addEventListener('click', (e) => {
+        if (e.target == e.currentTarget) {
+          this.emit('no');
+        }
+      });
+
     // yes
     document
       .querySelector('.confirmation .yes-btn')
