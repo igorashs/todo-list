@@ -16,6 +16,13 @@ export default class EditTodoMdView extends EventEmitter {
       .addEventListener('click', () => {
         this.emit('cancelModal');
       });
+    document
+      .querySelector('.edit-todo')
+      .parentElement.addEventListener('click', (e) => {
+        if (e.target == e.currentTarget) {
+          this.emit('cancelModal');
+        }
+      });
     // update
     document.querySelector('.edit-todo .edit').addEventListener('click', () => {
       this.emit('updateTodo');
