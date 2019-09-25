@@ -141,8 +141,13 @@ export default class TodoListController {
     });
     // complete
     _todoListView.on('completeTodo', (id) => {
-      // !make complete
-      console.log('completed', id);
+      const todo = _todoListModel.getTodoAt(id);
+      if (todo.complete) {
+        todo.complete = false;
+      } else {
+        todo.complete = true;
+      }
+      _todoListModel.updateTodo(todo);
     });
     // edit
     _todoListView.on('editTodo', (id) => {

@@ -19,6 +19,11 @@ export default class TodoListView extends EventEmitter {
     todoList.forEach((todo) => {
       const nodeElement = _createNodeElement(todo);
       _assignEvents.call(this, nodeElement);
+      if (todo.complete) {
+        _toggleComplete(nodeElement, todo.priority);
+      } else {
+        _setPriority(nodeElement, todo.priority);
+      }
       listView.appendChild(nodeElement);
     });
 
@@ -55,6 +60,14 @@ export default class TodoListView extends EventEmitter {
       </div>
     </div>`;
       return elementView.firstElementChild;
+    }
+
+    function _toggleComplete(nodeElement, priority) {
+      nodeElement.classList.toggle('complete');
+      nodeElement.classList.remove(`priority-${priority}`);
+    }
+    function _setPriority(nodeElement, priority) {
+      nodeElement.classList.add(`priority-${priority}`);
     }
   }
 
