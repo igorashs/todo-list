@@ -1,13 +1,13 @@
-import TodoListModel from '../models/todo-list-model';
-import TodoListView from '../views/todo-list-view';
-import InfoTodoMdView from '../views/info-todo-modal-view';
-import ConfirmMdView from '../views/confirm-modal-view';
-import EditTodoMdView from '../views/edit-todo-modal-view';
-import Validator from '../validator';
-import CreateTodoMdView from '../views/create-todo-modal-view';
-import Todo from '../factories/todo';
+import TodoListModel from '../models/TodoListModel';
+import TodoListView from '../views/TodoListView';
+import InfoTodoMdView from '../views/InfoTodoMdView';
+import ConfirmMdView from '../views/ConfirmMdView';
+import EditTodoMdView from '../views/EditTodoMdView';
+import Validator from '../Validator';
+import CreateTodoMdView from '../views/CreateTodoMdView';
+import Todo from '../factories/Todo';
 import { format, parse } from 'date-fns';
-import TodoSorter from '../todo-sorter';
+import TodoSorter from '../TodoSorter';
 
 export default class TodoListController {
   constructor() {

@@ -1,4 +1,4 @@
-import StorageController from './js_modules/controllers/storage-controller';
+import StorageController from './js_modules/controllers/StorageController';
 
 const storageController = new StorageController(localStorage);
 storageController.init();

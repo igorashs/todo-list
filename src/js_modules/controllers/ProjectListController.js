@@ -1,9 +1,9 @@
-import ProjectListModel from '../models/project-list-model';
-import ProjectListView from '../views/project-list-view';
-import CrtProjectMdView from '../views/create-project-modal-view';
-import Validator from '../validator';
-import Project from '../factories/project';
-import ConfirmMdView from '../views/confirm-modal-view';
+import ProjectListModel from '../models/ProjectListModel';
+import ProjectListView from '../views/ProjectListView';
+import CrtProjectMdView from '../views/CrtProjectMdView';
+import Validator from '../Validator';
+import Project from '../factories/Project';
+import ConfirmMdView from '../views/ConfirmMdView';
 
 export default class ProjectListController {
   constructor(storageModel) {

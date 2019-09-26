@@ -1,8 +1,8 @@
-import ProjectListModel from '../models/project-list-model';
-import StorageModel from '../models/storage-model';
-import TodoListModel from '../models/todo-list-model';
-import ProjectListController from './project-list-controller';
-import TodoListController from './todo-list-controller';
+import ProjectListModel from '../models/ProjectListModel';
+import StorageModel from '../models/StorageModel';
+import TodoListModel from '../models/TodoListModel';
+import ProjectListController from './ProjectListController';
+import TodoListController from './TodoListController';
 export default class StorageController {
   constructor(storage) {
     // singleton
